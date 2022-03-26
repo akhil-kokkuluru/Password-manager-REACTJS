@@ -18,7 +18,62 @@ class InputComponent extends Component {
               src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
             />
             <div className="inputContainer">
-              <p className="heading">Add New Password</p>
+              <div className="innerContainer">
+                <p className="heading">Add New Password</p>
+                <div className="inputELandLogoContainer">
+                  <img
+                    className="inputLogo"
+                    alt="website"
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png"
+                  />
+                  <input
+                    className="websiteInput"
+                    placeholder="Enter Website"
+                    type="text"
+                  />
+                </div>
+                <div className="inputELandLogoContainer">
+                  <img
+                    className="inputLogo"
+                    alt="username"
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
+                  />
+                  <input
+                    type="text"
+                    className="websiteInput"
+                    placeholder="Enter Username"
+                  />
+                </div>
+                <div className="inputELandLogoContainer">
+                  <img
+                    className="inputLogo"
+                    alt="password"
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
+                  />
+                  <input
+                    type="password"
+                    className="websiteInput"
+                    placeholder="Enter Password"
+                  />
+                </div>
+                <button className="buttonCss" type="submit">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="detailsContainer">
+            <div className="countandInputContainer">
+              <div className="countContainer">
+                <p className="passwordsText">Your Passwords</p>
+                <p className="count">1</p>
+              </div>
+              <div className="searchContainer">
+                <img
+                  className=""
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
+                />
+              </div>
             </div>
           </div>
         </div>
