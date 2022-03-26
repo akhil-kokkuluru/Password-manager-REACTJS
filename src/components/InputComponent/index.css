@@ -1,0 +1,48 @@
+.totalContainer {
+  background-color: #9ba9eb;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.contentContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.logoImg {
+  width: 140px;
+  align-self: flex-start;
+}
+.detailsContainer {
+  width: 100%;
+  background-color: #5763a5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inputsImage {
+  width: 200px;
+}
+.inputContainer {
+  width: 80%;
+  background-color: #454f84;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.heading {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Roboto';
+  align-self: flex-start;
+}
