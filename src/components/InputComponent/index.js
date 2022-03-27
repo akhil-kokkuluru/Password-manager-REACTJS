@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import './index.css'
+import PasswordItems from '../PasswordItems'
 
 class InputComponent extends Component {
   render() {
@@ -70,10 +71,32 @@ class InputComponent extends Component {
               </div>
               <div className="searchContainer">
                 <img
-                  className=""
+                  className="searchImgcss"
+                  alt="search"
                   src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
                 />
+                <input
+                  className="inputSearch"
+                  placeholder="Search"
+                  type="text"
+                />
               </div>
+            </div>
+            <hr className="linecss" />
+            <div className="belowContainer">
+              <div className="showPasswordsContainer">
+                <input id="showpass" type="checkbox" />
+                <label htmlFor="showpass" className="checkText">
+                  Show Passwords
+                </label>
+              </div>
+              <ul className="passwordItemsContainer">
+                <PasswordItems
+                  website="www.akhil.com"
+                  name="akhil"
+                  password="qwerty"
+                />
+              </ul>
             </div>
           </div>
         </div>
