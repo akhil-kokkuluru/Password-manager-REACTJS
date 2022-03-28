@@ -3,6 +3,15 @@ import './index.css'
 import {v4} from 'uuid'
 import PasswordItems from '../PasswordItems'
 
+const BGcolors = [
+  'initialBg0',
+  'initialBg1',
+  'initialBg2',
+  'initialBg3',
+  'initialBg4',
+  'initialBg5',
+]
+
 class InputComponent extends Component {
   state = {
     details: [],
@@ -10,6 +19,7 @@ class InputComponent extends Component {
     Name: '',
     Password: '',
     hidden: true,
+    SearchValue: '',
   }
 
   onWebsiteInput = event => {
@@ -24,9 +34,25 @@ class InputComponent extends Component {
     this.setState({Password: event.target.value})
   }
 
-  onClickingAdd = () => {
-    const {Name, Website, Password, details} = this.state
-    const creds = {id: v4(), name: Name, website: Website, password: Password}
+  onSearching = event => {
+    this.setState({
+      SearchValue: event.target.value,
+    })
+    console.log(event.target.value)
+  }
+
+  onClickingAdd = event => {
+    event.preventDefault()
+    const {Name, Website, Password} = this.state
+    const colorName = BGcolors[Math.ceil(Math.random() * BGcolors.length - 1)]
+
+    const creds = {
+      id: v4(),
+      name: Name,
+      website: Website,
+      password: Password,
+      colorNames: colorName,
+    }
     this.setState(prevState => ({
       details: [...prevState.details, creds],
       Website: '',
@@ -45,8 +71,11 @@ class InputComponent extends Component {
   }
 
   render() {
-    const {details, Name, Website, Password, hidden} = this.state
-    console.log(hidden)
+    const {details, Name, Website, Password, hidden, SearchValue} = this.state
+    const finalList = details.filter(item =>
+      item.website.toLowerCase().includes(SearchValue.toLowerCase()),
+    )
+    console.log(finalList)
     const totalPasswords = details.length
     const g = details.length === 0
     const noPasswordSite = (
@@ -61,7 +90,7 @@ class InputComponent extends Component {
     )
     const hasPassword = (
       <ul className="passwordItemsContainer">
-        {details.map(item => (
+        {finalList.map(item => (
           <PasswordItems
             id={item.id}
             key={item.id}
@@ -70,6 +99,7 @@ class InputComponent extends Component {
             password={item.password}
             hidden={hidden}
             onDeleteClick={this.onDeleteClick}
+            colorNames={item.colorNames}
           />
         ))}
       </ul>
@@ -88,12 +118,12 @@ class InputComponent extends Component {
           <div className="detailsContainer">
             <img
               className="inputsImage"
-              alt="password"
+              alt="password manager"
               src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
             />
             <div className="inputContainer">
-              <div className="innerContainer">
-                <p className="heading">Add New Password</p>
+              <form className="innerContainer" onSubmit={this.onClickingAdd}>
+                <h1 className="heading">Add New Password</h1>
                 <div className="inputELandLogoContainer">
                   <img
                     className="inputLogo"
@@ -136,20 +166,16 @@ class InputComponent extends Component {
                     value={Password}
                   />
                 </div>
-                <button
-                  className="buttonCss"
-                  type="submit"
-                  onClick={this.onClickingAdd}
-                >
+                <button className="buttonCss" type="submit">
                   Add
                 </button>
-              </div>
+              </form>
             </div>
           </div>
-          <div className="detailsContainer">
+          <div className="detailsContainer2">
             <div className="countandInputContainer">
               <div className="countContainer">
-                <p className="passwordsText">Your Passwords</p>
+                <h1 className="passwordsText">Your Passwords</h1>
                 <p className="count">{totalPasswords}</p>
               </div>
               <div className="searchContainer">
@@ -161,7 +187,9 @@ class InputComponent extends Component {
                 <input
                   className="inputSearch"
                   placeholder="Search"
-                  type="text"
+                  type="search"
+                  onChange={this.onSearching}
+                  value={SearchValue}
                 />
               </div>
             </div>
